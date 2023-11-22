@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./InvestmentForm.css";
+import classes from "./InvestmentForm.module.css";
 
 const InvestmentForm = (props) => {
     const initialUserInput={
@@ -13,7 +13,7 @@ const InvestmentForm = (props) => {
 
   const inputChangeHandler = (identifier, value) => {
     setUserInput((prevState) => {
-        return { ...prevState, [identifier]: value };
+        return { ...prevState, [identifier]: +value };
       });
   };
   
@@ -35,8 +35,8 @@ const InvestmentForm = (props) => {
     setUserInput(initialUserInput)
   }
   return (
-    <form className="form" onSubmit={submitHandler}>
-      <div className="input-group">
+    <form className={classes.form} onSubmit={submitHandler}>
+      <div className={classes['input-group']}>
         <p>
           <label htmlFor="current-savings">Current Savings (₹)</label>
           <input
@@ -60,7 +60,7 @@ const InvestmentForm = (props) => {
           />
         </p>
       </div>
-      <div className="input-group">
+      <div className={classes['input-group']}>
         <p>
           <label htmlFor="expected-return">
             Expected Interest (%, per year)
@@ -86,11 +86,11 @@ const InvestmentForm = (props) => {
           />
         </p>
       </div>
-      <p className="actions">
-        <button type="reset" onClick={resetHandler} className="buttonAlt">
+      <p className={classes['actions']}>
+        <button type="reset" onClick={resetHandler} className={classes.buttonAlt}>
           Reset
         </button>
-        <button type="submit" className="button">
+        <button type="submit" className={classes.button}>
           Calculate
         </button>
       </p>
